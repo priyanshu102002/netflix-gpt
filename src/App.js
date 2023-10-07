@@ -1,11 +1,8 @@
-
-import './App.css';
+import Body from './components/Body';
 
 function App() {
   return (
-    <div className="App bg-green-700 ">
-      Hello ji kaise hai saare
-    </div>
+    <Body />
   );
 }
 
