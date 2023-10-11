@@ -4,15 +4,22 @@ import { checkValidateDate } from "../utils/validate";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    updateProfile,
 } from "firebase/auth";
-import {auth} from '../utils/firebase'
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
+    const navigate = useNavigate();
     const [isSignIn, setIsSignIn] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
+    const dispatch = useDispatch();
 
     const email = useRef(null);
     const password = useRef(null);
+    const name = useRef(null);
 
     const toggleSignInform = () => {
         setIsSignIn(!isSignIn);
@@ -36,7 +43,25 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed up
                     const user = userCredential.user;
-                    console.log(user);
+                    updateProfile(user, {
+                        displayName: name.current.value,
+                        photoURL: "/images/user-image.jpg",
+                    })
+                        .then(() => {
+                            const { uid, displayName, email, photoURL } = auth.currentUser;
+                            dispatch(
+                                addUser({
+                                    uid: uid,
+                                    email: email,
+                                    displayName: displayName,
+                                    photoURL: photoURL,
+                                })
+                            );
+                            navigate("/browse");
+                        })
+                        .catch((error) => {
+                            setErrorMessage(error);
+                        });
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -46,13 +71,15 @@ const Login = () => {
         } else {
             //SignIn Logic
 
-            signInWithEmailAndPassword(auth,email.current.value,
-                password.current.value)
+            signInWithEmailAndPassword(
+                auth,
+                email.current.value,
+                password.current.value
+            )
                 .then((userCredential) => {
                     // Signed in
                     const user = userCredential.user;
-                    console.log("signIn");
-                    console.log(user);
+                    navigate("/browse");
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -83,6 +110,7 @@ const Login = () => {
 
                 {!isSignIn && (
                     <input
+                        ref={name}
                         type="text"
                         placeholder="Full Name"
                         className="px-2 py-3 my-4 w-full rounded-md outline-none bg-zinc-600"
