@@ -3,6 +3,6 @@ export const options = {
     headers: {
         accept: "application/json",
         Authorization:
-            `Bearer ${import.meta.REACT_MOVIE_API_TOKEN}`,
+            `Bearer ${process.env.REACT_MOVIE_API_TOKEN}`,
     },
 };
