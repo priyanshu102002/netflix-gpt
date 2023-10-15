@@ -56,7 +56,6 @@ const Header = () => {
                     className="w-8 h-20 mr-3 pt-8"
                     src={user.photoURL}
                 />
-                <p className="mr-2">({user.displayName})</p>
                 </div>
                 
                 <button onClick={signOutHandler} className="font-bold text-white">SignOut</button>
