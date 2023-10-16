@@ -41,8 +41,12 @@ const Header = () => {
         return () => unsubscribe();
     },[]);
 
+    const gptSearchHandler = () =>{
+        
+    }
+
     return (
-        <div className="absolute w-full px-16 py-1 z-10 bg-gradient-to-b from-black flex justify-between">
+        <div className="absolute top-0  w-full px-16 py-1 z-21 bg-gradient-to-b from-black flex justify-between">
             <div>
                 <img
                     className="w-44"
@@ -51,10 +55,11 @@ const Header = () => {
                 />
             </div>
             {user && <div className="flex">
+                <button className="bg-purple-600 px-4 py-2 rounded-lg m-7" onClick={gptSearchHandler}>GPT Search</button>
                 <div>
                     <img
-                    className="w-8 h-20 mr-3 pt-8"
-                    src={user.photoURL}
+                    className="w-8 h-20 mr-3 pt-6 rounded-lg"
+                    src='/images/user-icon.jpg'
                 />
                 </div>
                 
