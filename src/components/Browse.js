@@ -15,9 +15,9 @@ const Browse = () => {
     useUpcomingMovies()
     useLatestSeries()
     return (
-        <div className="bg-black">
+        <div className="bg-black w-full  relative">
             <Header />
-            <GPTSearch />
+            {/* <GPTSearch /> */}
             <MainContainer />
             <SecondaryContainer />
         </div>

@@ -6,14 +6,14 @@ const MainContainer = () => {
     const movies = useSelector((store) => store.movies?.nowPlayingMovies);
 
     if (movies === null) return;
-    const mainMovie = movies.results[Math.floor((Math.random() * 20) )];
+    const mainMovie = movies.results[Math.floor(Math.random() * 20)];
 
-    const { original_title, overview , id } = mainMovie;
+    const { original_title, overview, id } = mainMovie;
 
     return (
-        <div className="h-screen w-full bg-gray-800 relative text-white">
+        <div className="relative top-0 h-screen w-full  text-white">
             <VideoTitle title={original_title} overview={overview} />
-            <VideoBackground movieId = {id} />
+            <VideoBackground movieId={id} />
         </div>
     );
 };

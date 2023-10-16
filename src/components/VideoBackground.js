@@ -6,9 +6,8 @@ const VideoBackground = ({ movieId }) => {
     useNowPlayingTrailer(movieId);
 
     return (
-        <div className="w-full h-screen absolute top-0">
-            <iframe
-                className="h-screen"
+        <div className="w-full h-screen">
+            <iframe                
                 src={`https://www.youtube.com/embed/${trailerVideo?.key}?modestbranding=1&amp;rel=0&amp;showinfo=0&autoplay=1&mute=1`}
                 title="YouTube video player"
                 width="100%"
