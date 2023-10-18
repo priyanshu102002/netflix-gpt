@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
+import { toggleGptSearchView } from "../utils/gptSlice";
 
 const Header = () => {
     const navigate = useNavigate();
@@ -42,7 +43,7 @@ const Header = () => {
     },[]);
 
     const gptSearchHandler = () =>{
-        
+        dispatch(toggleGptSearchView())
     }
 
     return (
