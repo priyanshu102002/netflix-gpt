@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addLatestSeries } from "../utils/movieSlice";
 import { OPTIONS } from "../utils/constants";
 
 const useLatesetSeries = () => {
     const dispatch = useDispatch();
+    const latestSeries = useSelector(store => store.movies.latestSeries)
 
     const getLatestSeries = async () => {
         const data = await fetch(
@@ -16,7 +17,7 @@ const useLatesetSeries = () => {
     };
 
     useEffect(() => {
-        getLatestSeries();
+        !latestSeries && getLatestSeries();
     }, []);
 };
 

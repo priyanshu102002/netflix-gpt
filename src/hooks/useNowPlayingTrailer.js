@@ -5,6 +5,7 @@ import { OPTIONS } from "../utils/constants";
 
 
 const useNowPlayingTrailer = (movieId) =>{
+    const trailerVideo = useSelector(store => store.movies.trailerVideo)
     
     const dispatch = useDispatch();
 
@@ -23,7 +24,7 @@ const useNowPlayingTrailer = (movieId) =>{
         dispatch(addTrailerVideo(trailers));
     };
     useEffect(() => {
-        getMovieVideo();
+        !trailerVideo && getMovieVideo();
     }, []);
 }
 
