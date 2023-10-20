@@ -94,17 +94,17 @@ const Login = () => {
             <Header />
             <div className="absolute">
                 <img
-                    className="bg-gradient-to-tl from-black"
-                    src="https://assets.nflxext.com/ffe/siteui/vlv3/893a42ad-6a39-43c2-bbc1-a951ec64ed6d/1d86e0ac-428c-4dfa-9810-5251dbf446f8/IN-en-20231002-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+                    className="object-fill h-full w-full"
+                    src="/images/netflix-bg-img.jpg"
                     alt="netflix-background-image"
                 />
             </div>
 
             <form
                 onSubmit={(e) => e.preventDefault()}
-                className="absolute bg-black p-12 pb-16 w-1/4  mt-44 mx-auto text-white right-0 left-0 rounded-md bg-opacity-[.85]"
+                className="absolute flex flex-col p-16 pb-28 gap-10 mt-8 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  bg-black rounded-md bg-opacity-[.80] w-[460px]"
             >
-                <h1 className="text-3xl text-white py-4 font-bold">
+                <h1 className="text-3xl text-white  font-bold">
                     {isSignIn ? "Sign In" : "Sign Up"}
                 </h1>
 
@@ -113,7 +113,7 @@ const Login = () => {
                         ref={name}
                         type="text"
                         placeholder="Full Name"
-                        className="px-2 py-3 my-4 w-full rounded-md outline-none bg-zinc-600"
+                        className=" py-2 px-5  leading-10 text-white rounded-md outline-none bg-[#333]"
                     />
                 )}
 
@@ -121,24 +121,24 @@ const Login = () => {
                     ref={email}
                     type="text"
                     placeholder="Email Address"
-                    className="px-2 py-3 my-4 w-full rounded-md outline-none bg-zinc-600"
+                    className=" py-2 px-5  leading-10 text-white rounded-md outline-none bg-[#333]"
                 />
                 <input
                     ref={password}
                     type="password"
                     placeholder="Password"
-                    className="px-2 py-3 my-4 mb-10 w-full rounded-md outline-none bg-zinc-600"
+                    className="py-2 px-5  leading-10 rounded-md outline-none text-white bg-[#333]"
                 />
-                <p className="text-red-600 font-bold ">{errorMessage}</p>
+                <p className="text-red-600 font-medium -my-5 ">{errorMessage}</p>
 
                 <button
                     onClick={handleButtonClick}
-                    className="p-3 my-4 w-full text-white cursor-pointer bg-red-700 font-bold text-xl rounded-md"
+                    className="py-3 px-5 text-white cursor-pointer bg-red-700 font-bold text-xl rounded-md"
                 >
                     {isSignIn ? "Sign In" : "Sign Up"}
                 </button>
 
-                <p onClick={toggleSignInform} className="cursor-pointer mt-4">
+                <p onClick={toggleSignInform} className="cursor-pointer  text-white">
                     {isSignIn
                         ? "New to Netflix? Sign up now."
                         : "Already a member? Sign In now."}

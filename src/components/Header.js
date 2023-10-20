@@ -47,24 +47,19 @@ const Header = () => {
     }
 
     return (
-        <div className="absolute z-20 top-0 w-full px-16 bg-gradient-to-b from-black flex justify-between">
+        <div className="absolute z-10 w-full flex justify-between h-20 text-white items-center px-8 ">
             <div>
                 <img
-                    className="w-44"
+                    className="w-52"
                     src="/images/netflixlogo.png"
                     alt="netflix logo"
                 />
             </div>
-            {user && <div className="flex">
-                <button className="bg-purple-600 px-4 py-2 rounded-lg m-7" onClick={gptSearchHandler}>GPT Search</button>
-                <div>
-                    <img
-                    className="w-8 h-20 mr-3 pt-6 rounded-lg"
-                    src='/images/user-icon.jpg'
-                />
-                </div>
+            {user && <div className="flex gap-8">
+                <button className="bg-[#10a37f] px-4 py-2 rounded-md" onClick={gptSearchHandler}>GPT Search</button>
                 
-                <button onClick={signOutHandler} className="font-bold text-white">SignOut</button>
+                
+                <button onClick={signOutHandler} className="bg-[#e50914] px-4 py-2 rounded-md">SignOut</button>
             </div>}
         </div>
     );
